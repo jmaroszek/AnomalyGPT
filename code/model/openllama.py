@@ -11,6 +11,9 @@ import kornia as K
 import torch
 from torch.nn.utils import rnn
 
+from peft import LoraConfig, TaskType, get_peft_model #I added this
+from transformers import LlamaTokenizer, LlamaForCausalLM, LlamaConfig #I added this
+
 CLASS_NAMES = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal nut', 'pill', 'screw', 'tile', 'toothbrush', 'transistor', 'wood', 'zipper', 'object',
                'candle', 'cashew', 'chewinggum', 'fryum', 'macaroni', 'pcb', 'pipe fryum']
 

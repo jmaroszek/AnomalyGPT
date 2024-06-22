@@ -55,6 +55,7 @@ describles['wood'] = "This is a photo of wood for anomaly detection, which shoul
 describles['zipper'] = "This is a photo of a zipper for anomaly detection, which should be without any damage, flaw, defect, scratch, hole or broken part."
 
 
+#what
 class MVtecDataset(Dataset):
     def __init__(self, root_dir: str):
         self.root_dir = root_dir
