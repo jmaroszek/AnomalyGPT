@@ -4,6 +4,7 @@ from .sft_dataset import *
 from .mvtec import *
 from .visa import VisaDataset
 from . import all_supervised_with_cn
+from .brain import BrainDataset
 
 '''
 def get_tokenizer(model):
@@ -78,7 +79,7 @@ def load_brain_dataset(args):
     data_path = args["data_path"]
     data = globals()[dataset_name](data_path, tokenizer, args['max_length']) #SupervisedDataset
     '''
-    data = MVtecDataset('../data/brain_data') #path to brain_data. New class
+    data = BrainDataset('../data/brain_data') #path to brain_data.
 
     sampler = torch.utils.data.RandomSampler(data)
     world_size = torch.distributed.get_world_size()

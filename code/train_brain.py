@@ -73,7 +73,6 @@ def main(**args):
             filemode='w'
         )
     
-    #need to create a function for loading my dataset 
     train_data_sft, train_iter_sft, sampler = load_sft_dataset(args) #is this still needed?
     train_data, train_iter, sampler = load_brain_dataset(args)
 
