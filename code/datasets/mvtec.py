@@ -89,6 +89,34 @@ class MVtecDataset(Dataset):
         return len(self.paths)
 
     def __getitem__(self, index):
+        """
+        Retrieve an image and its associated data from the dataset at the specified index.
+
+        Args:
+            index (int): The index of the data to retrieve.
+
+        Returns:
+            tuple: A tuple containing:
+                - origin (numpy.ndarray): The original image data after normalization.
+                - conversation_normal (list): A list of conversation dicts for normal images.
+                - x (numpy.ndarray): The transformed image data after applying self-supervised patch extraction and normalization.
+                - conversation_abnormal (list): A list of conversation dicts for images with detected anomalies.
+                - class_name (str): The class name of the image.
+                - mask (torch.Tensor): A tensor representing the mask applied to the image.
+                - img_path (str): The path to the image file.
+
+        The method performs the following steps:
+        1. Retrieves the image path and associated data from the dataset based on the given index.
+        2. Extracts the class name from the image path.
+        3. Configures self-supervised learning arguments based on the class name.
+        4. Converts the image data to a numpy array and stores the original image.
+        5. Applies any specified transformations to a previous image in the dataset.
+        6. Performs self-supervised patch extraction on the current image and previous image.
+        7. Normalizes the original and transformed images.
+        8. Determines the position of any detected anomaly centers in the image.
+        9. Constructs conversation scenarios for both normal and abnormal images.
+        10. Returns the normalized original image, conversation scenarios, transformed image, class name, mask, and image path.
+        """
 
         img_path, x = self.paths[index], self.x[index]
         class_name = img_path.split('/')[-4]
@@ -118,8 +146,7 @@ class MVtecDataset(Dataset):
         mask = torch.tensor(mask[None, ..., 0]).float()
         self.prev_idx = index
         
-
-
+        
         origin = self.norm_transform(origin)
         x = self.norm_transform(x)
 
