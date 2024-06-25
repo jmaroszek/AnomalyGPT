@@ -74,7 +74,7 @@ class SupervisedDataset(Dataset):
         texts = self.caption_list[i]
         print(texts)
         image_path = self.image_path_list[i]
-        image = Image.open(image_path).convert('RGB')
+        image = Image.open(image_path).convert('RGB') #this line throws the ..032413.jpg error
         image_tensor = self.norm_transform(image)
         return dict(image_paths = image_tensor, output_texts=texts)
 

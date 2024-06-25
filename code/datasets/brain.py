@@ -5,7 +5,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 import unittest
 
-#I think this is good for now
 class BrainDataset(Dataset):
     """Dataset for brain tumor classification."""
 

@@ -1,4 +1,4 @@
-deepspeed --include localhost --master_port 28400 train_brain.py \
+deepspeed --include localhost:0 --master_port 28400 train_brain.py \
     --model openllama_peft \
     --stage 1\
     --imagebind_ckpt_path ../pretrained_ckpt/imagebind_ckpt/imagebind_huge.pth\
@@ -10,4 +10,3 @@ deepspeed --include localhost --master_port 28400 train_brain.py \
     --save_path  ./ckpt/train_brain/\
     --log_path ./ckpt/train_brain/log_rest/
 
-#the save and log path are automatically created in the ckpt folder 

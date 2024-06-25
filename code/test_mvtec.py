@@ -165,8 +165,6 @@ for c_name in CLASS_NAMES:
     i_pred = np.array(i_pred)
     i_label = np.array(i_label)
 
-    
-
     p_auroc = round(roc_auc_score(p_label.ravel(), p_pred.ravel()) * 100,2)
     i_auroc = round(roc_auc_score(i_label.ravel(), i_pred.ravel()) * 100,2)
     
